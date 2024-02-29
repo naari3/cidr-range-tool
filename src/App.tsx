@@ -25,7 +25,7 @@ function App() {
 	}, []);
 
 	const [ipAddress, setIPAddress] = useState("");
-  const [subnet, setSubnet] = useState(0);
+	const [subnet, setSubnet] = useState(0);
 	const [subnetMask, setSubnetMask] = useState("");
 	const [numAddress, setNumAddress] = useState(0);
 	const [networkAddress, setNetworkAddress] = useState("");
@@ -35,7 +35,7 @@ function App() {
 		try {
 			const [ip, mask] = parseCIDR(userInput);
 			setIPAddress(ip.toString());
-      setSubnet(mask);
+			setSubnet(mask);
 			setSubnetMask(IPv4.subnetMaskFromPrefixLength(mask).toString());
 			setNumAddress(2 ** (32 - mask));
 			setNetworkAddress(IPv4.networkAddressFromCIDR(userInput).toString());
@@ -58,11 +58,12 @@ function App() {
 					type="text"
 					className="border"
 					value={userInput}
+					placeholder="3.0.0.0/8"
 					onChange={(e) => {
-            setUserInput(e.target.value);
-            if (e.target.value !== "") {
-              fetchController.current.abort();
-            }
+						setUserInput(e.target.value);
+						if (e.target.value !== "") {
+							fetchController.current.abort();
+						}
 					}}
 				/>
 			</div>
